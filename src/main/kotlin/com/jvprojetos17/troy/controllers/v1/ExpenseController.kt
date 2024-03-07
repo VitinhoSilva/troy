@@ -15,18 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/v1/expense")
+@RequestMapping("/v1/expense/")
 class ExpenseController(
     private val expenseService: ExpenseService,
 ) {
-
-
     @PostMapping
     fun createExpense(@RequestBody request: ExpenseRequestPost) {
         expenseService.createExpense(request)
     }
 
-    @GetMapping("/{expenseId}")
+    @GetMapping("{expenseId}")
     fun getExpense(
         @PathVariable expenseId: UUID,
     ): ExpenseResponse {
@@ -41,5 +39,9 @@ class ExpenseController(
         expenseService.updateExpense(expenseId, request)
     }
 
+    @GetMapping("list")
+    fun getExpenses(): List<ExpenseResponse> {
+        return expenseService.getExpenses()
+    }
 
 }

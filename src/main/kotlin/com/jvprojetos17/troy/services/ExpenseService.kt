@@ -48,4 +48,10 @@ class ExpenseService(
         val expensePersisted = expenseRepository.findById(expenseId).get()
         return ExpenseResponse.toResponse(expensePersisted)
     }
+
+    fun getExpenses(): List<ExpenseResponse> {
+        return expenseRepository.findAll().map {
+            ExpenseResponse.toResponse(it)
+        }
+    }
 }
