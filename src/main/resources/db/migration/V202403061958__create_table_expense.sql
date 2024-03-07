@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS troy.expense (
+    id UUID PRIMARY KEY,
+    description TEXT NOT NULL,
+    budget_id uuid NOT NULL,
+    value DECIMAL NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    deleted_at TIMESTAMP,
+    CONSTRAINT fk_budget FOREIGN KEY(budget_id) REFERENCES troy.budget(id) ON DELETE CASCADE
+);

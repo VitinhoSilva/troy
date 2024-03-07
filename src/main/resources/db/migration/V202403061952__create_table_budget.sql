@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS troy.budget (
+    id UUID PRIMARY KEY,
+    name TEXT NOT NULL,
+    month_id uuid NOT NULL,
+    year_id uuid NOT NULL,
+    value DECIMAL NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    deleted_at TIMESTAMP,
+    CONSTRAINT fk_month FOREIGN KEY(month_id) REFERENCES troy.month(id) ON DELETE CASCADE,
+    CONSTRAINT fk_year FOREIGN KEY(year_id) REFERENCES troy.year(id) ON DELETE CASCADE
+);
