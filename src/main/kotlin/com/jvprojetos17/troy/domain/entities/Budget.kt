@@ -16,16 +16,10 @@ data class Budget (
     @Id
     val id: UUID = UUID.randomUUID(),
     val name: String,
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "month_id", referencedColumnName = "id", nullable = false)
-    val month: Month,
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "year_id", referencedColumnName = "id", nullable = false)
-    val year: Year,
+    val month: String,
+    val year: String,
     val value: Double,
     val createdAt: OffsetDateTime,
     val updatedAt: OffsetDateTime,
-    val deletedAt: OffsetDateTime?,
+    val deletedAt: OffsetDateTime? = null
 )

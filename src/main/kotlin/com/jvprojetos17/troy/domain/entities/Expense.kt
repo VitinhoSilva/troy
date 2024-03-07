@@ -1,6 +1,7 @@
 package com.jvprojetos17.troy.domain.entities
 
 import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
@@ -17,9 +18,9 @@ data class Expense (
 
     @ManyToOne
     @JoinColumn(name = "budget_id")
-    private val budget: Budget,
+    val budget: Budget,
     val value: Double,
     val createdAt: OffsetDateTime,
     val updatedAt: OffsetDateTime,
-    val deletedAt: OffsetDateTime?,
+    val deletedAt: OffsetDateTime? = null
 )

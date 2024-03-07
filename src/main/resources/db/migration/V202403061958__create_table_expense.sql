@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS troy.expense (
     id UUID PRIMARY KEY,
-    description TEXT NOT NULL,
     budget_id uuid NOT NULL,
+    description TEXT NOT NULL,
     value DECIMAL NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,

@@ -5,6 +5,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import java.time.OffsetDateTime
 import java.util.UUID
 
 @Entity
@@ -16,4 +17,6 @@ data class BudgetedCalculated (
     @JoinColumn(name = "budget_id")
     private val budget: Budget,
     val value: Double,
+    val createdAt: OffsetDateTime,
+    val updatedAt: OffsetDateTime
 )
