@@ -9,7 +9,6 @@ import java.time.OffsetDateTime
 import java.time.format.TextStyle
 import java.util.Locale
 import java.util.UUID
-import org.apache.coyote.BadRequestException
 import org.springframework.stereotype.Service
 
 @Service
@@ -19,11 +18,12 @@ class BudgetService(
 ) {
     fun createBudget(budgetRequest: BudgetRequestPost) {
         val now = OffsetDateTime.now()
-        val monthName = now.month.getDisplayName(TextStyle.FULL, Locale.forLanguageTag("pt-BR")).capitalize()
+        val monthName = now.month.getDisplayName(TextStyle.FULL, Locale.forLanguageTag("pt-BR"))
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         val year = now.year.toString()
 
         if (budgetRequest.value <= 0) {
-            throw BadRequestException("The value must be above zero!")
+            throw Exception("The value must be above zero!")
         }
 
         val budget = Budget(

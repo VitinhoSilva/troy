@@ -16,7 +16,6 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -87,9 +86,6 @@ tasks.named<Jar>("jar") {
 buildscript {
 	repositories {
 		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.5.5")
 	}
 }
 
