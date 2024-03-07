@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/v1/budget/")
+@RequestMapping("/v1/budget")
 class BudgetController(
     private val budgetService: BudgetService,
 ) {
@@ -29,7 +29,7 @@ class BudgetController(
         budgetService.createBudget(request)
     }
 
-    @PatchMapping("{budgetId}")
+    @PatchMapping("/{budgetId}")
     fun updateBudgetValue(
         @PathVariable budgetId: UUID,
         @RequestBody request: BudgetRequestPatch
@@ -37,14 +37,14 @@ class BudgetController(
         budgetService.updateBudgetValue(budgetId, request)
     }
 
-    @GetMapping("{budgetId}")
+    @GetMapping("/{budgetId}")
     fun getBudget(
         @PathVariable budgetId: UUID,
     ): BudgetResponse {
         return budgetService.getBudget(budgetId)
     }
 
-    @GetMapping("list")
+    @GetMapping("/list")
     fun getBudgets(): List<BudgetResponse> {
         return budgetService.getBudgets()
     }

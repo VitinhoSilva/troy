@@ -2,7 +2,6 @@ package com.jvprojetos17.troy.services
 
 import com.jvprojetos17.troy.controllers.request.ExpenseRequestPatch
 import com.jvprojetos17.troy.controllers.request.ExpenseRequestPost
-import com.jvprojetos17.troy.controllers.response.BudgetResponse
 import com.jvprojetos17.troy.controllers.response.ExpenseResponse
 import com.jvprojetos17.troy.domain.entities.Expense
 import com.jvprojetos17.troy.repository.BudgetRepository
@@ -49,8 +48,8 @@ class ExpenseService(
         return ExpenseResponse.toResponse(expensePersisted)
     }
 
-    fun getExpenses(): List<ExpenseResponse> {
-        return expenseRepository.findAll().map {
+    fun getExpenses(budgetId: UUID): List<ExpenseResponse>? {
+        return expenseRepository.findByBudgetId(budgetId)?.map {
             ExpenseResponse.toResponse(it)
         }
     }
