@@ -82,3 +82,12 @@ tasks.named("check") {
 tasks.named<Jar>("jar") {
 	enabled = false
 }
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.5.5")
+	}
+}
